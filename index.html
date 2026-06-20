@@ -220,12 +220,12 @@
             <div class="flex items-center justify-between h-20">
                 
                 <!-- Traditional Logo Assembly -->
-                <a href="#home" onclick="navigateTo('home')" class="flex items-center space-x-3 group">
+                <a href="#home" onclick="navigateTo('home')" class="flex items-center gap-3 sm:gap-4 group">
                     <div class="flex items-center justify-center p-1 rounded-xl">
-                        <img src="images/logo.png" alt="Apoorva Sweets & Bakery Logo" class="w-15 h-15 sm:w-16 sm:h-16 object-contain">
+                        <img src="images/logo.png" alt="Apoorva Sweets & Bakery Logo" class="h-8 sm:h-10 md:h-12 lg:h-14 w-auto object-contain">
                     </div>
-                    <div class="flex flex-col">
-                        <span class="text-xl sm:text-2xl font-bold font-heading text-apoorva-maroon tracking-wider group-hover:text-apoorva-saffron transition-colors duration-200">
+                    <div class="flex flex-col min-w-0">
+                        <span class="text-lg sm:text-xl md:text-2xl font-bold font-heading text-apoorva-maroon tracking-wider group-hover:text-apoorva-saffron transition-colors duration-200">
                             APOORVA
                         </span>
                         <span class="text-[10px] text-apoorva-saffron font-body tracking-widest uppercase font-bold">
@@ -270,8 +270,8 @@
                 <div>
                     <div class="flex items-center justify-between pb-6 border-b border-apoorva-gold/20">
                         <div class="flex items-center space-x-3">
-                            <div class="bg-apoorva-maroon p-2.5 rounded-xl flex items-center justify-center">
-                                <i class="fa-solid fa-cookie-bite text-white text-xl"></i>
+                            <div class="flex items-center justify-center p-1 rounded-xl">
+                                <img src="images/logo.png" alt="Apoorva Logo" class="h-8 sm:h-10 w-auto object-contain">
                             </div>
                             <span class="text-xl font-bold font-heading text-apoorva-maroon tracking-wider">
                                 APOORVA
@@ -611,7 +611,7 @@
                     <div class="relative z-10 space-y-3">
                         <span class="text-apoorva-saffron tracking-widest text-xs uppercase font-bold font-body">Pure Milk & Desi Ghee Artistry</span>
                         <h1 class="text-3xl sm:text-5xl font-black font-heading text-apoorva-maroon">Traditional Sweets Gallery</h1>
-                        <p class="text-apoorva-charcoal/75 max-w-lg mx-auto text-xs sm:text-sm font-body">Prepared daily under strict hygienic kitchen standards in Pudhumallavadi. Minimum sweet bulk orders begin from 2 Kg.</p>
+                        <p class="text-apoorva-charcoal/75 max-w-lg mx-auto text-xs sm:text-sm font-body">Prepared daily under strict hygienic kitchen standards in Pudhumallavadi. Minimum sweet bulk orders begin from 1 Kg.</p>
                     </div>
                 </div>
 
@@ -705,7 +705,7 @@
                     <div class="relative z-10 space-y-3">
                         <span class="text-apoorva-saffron tracking-widest text-xs uppercase font-bold font-body">Crisp Golden Crunch</span>
                         <h1 class="text-3xl sm:text-5xl font-black font-heading text-apoorva-maroon">Traditional Savouries</h1>
-                        <p class="text-apoorva-charcoal/75 max-w-lg mx-auto text-xs sm:text-sm font-body">Fried in high-grade cooking oil with fresh peanut slices and hand-pounded spices. Minimum savoury bulk order begins from 2 Kg.</p>
+                        <p class="text-apoorva-charcoal/75 max-w-lg mx-auto text-xs sm:text-sm font-body">Fried in high-grade cooking oil with fresh peanut slices and hand-pounded spices. Minimum savoury bulk order begins from 1 Kg.</p>
                     </div>
                 </div>
 
@@ -1260,7 +1260,7 @@
                     }
 
                     const val = parseFloat(valStr);
-                    let min = (product.type === 'weight') ? 2 : (product.type === 'pieces' ? 30 : 0.5);
+                    let min = (product.type === 'weight') ? 1 : (product.type === 'pieces' ? 30 : 0.5);
 
                     if (isNaN(val) || val < min) {
                         showToast(`Error: Value must be at least ${min} ${product.type === 'pieces' ? 'Pcs' : 'Kg'}!`);
@@ -1272,7 +1272,7 @@
                     unit = select.value;
                 }
             } else {
-                unit = (product.type === 'cake' ? '1.0 Kg' : (product.type === 'weight' ? '2 Kg' : '30 Pcs'));
+                unit = (product.type === 'cake' ? '1.0 Kg' : (product.type === 'weight' ? '1 Kg' : '30 Pcs'));
             }
 
             const message = "🔔 *APOORVA SWEETS & BAKERY - ORDER ENQUIRY* 🔔\n\n" +
@@ -1308,7 +1308,7 @@
                     }
 
                     const val = parseFloat(valStr);
-                    let min = (product.type === 'weight') ? 2 : (product.type === 'pieces' ? 30 : 0.5);
+                    let min = (product.type === 'weight') ? 1 : (product.type === 'pieces' ? 30 : 0.5);
 
                     if (isNaN(val) || val < min) {
                         showToast(`Error: Value must be at least ${min} ${product.type === 'pieces' ? 'Pcs' : 'Kg'}!`);
@@ -1320,7 +1320,7 @@
                     unit = select.value;
                 }
             } else {
-                unit = (product.type === 'cake' ? '1.0 Kg' : (product.type === 'weight' ? '2 Kg' : '30 Pcs'));
+                unit = (product.type === 'cake' ? '1.0 Kg' : (product.type === 'weight' ? '1 Kg' : '30 Pcs'));
             }
 
             const existingIndex = enquiryCart.findIndex(item => item.id === itemId && item.unit === unit);
@@ -1347,13 +1347,13 @@
                 return `
                     <div class="flex flex-col gap-1 w-full font-body">
                         <select id="card-unit-${item.id}" onchange="toggleCustomUnit('${item.id}', '${item.type}')" class="bg-white text-apoorva-charcoal text-xs border border-apoorva-gold rounded-lg px-2 py-1.5 font-bold focus:outline-none focus:ring-1 focus:ring-apoorva-maroon">
-                            <option value="2 Kg" selected>2 Kg (Min)</option>
+                            <option value="1 Kg" selected>1 Kg (Min)</option>
                             <option value="3 Kg">3 Kg</option>
                             <option value="5 Kg">5 Kg</option>
                             <option value="10 Kg">10 Kg</option>
                             <option value="custom">Custom...</option>
                         </select>
-                        <input type="text" id="card-custom-val-${item.id}" class="hidden w-full bg-white text-apoorva-charcoal text-xs border border-apoorva-gold rounded-lg px-2 py-1 font-bold focus:outline-none" placeholder="Min: 2 Kg">
+                        <input type="text" id="card-custom-val-${item.id}" class="hidden w-full bg-white text-apoorva-charcoal text-xs border border-apoorva-gold rounded-lg px-2 py-1 font-bold focus:outline-none" placeholder="Min: 1 Kg">
                     </div>
                 `;
             } else if (item.type === 'cake') {
